@@ -4,30 +4,23 @@ const Todo = require("../../models/todo");
 exports.updateTodo = async (req, res) => {
   try {
     const todoId = req.params.id;
-    // if (!ObjectId.isValid(todoId)) {
-    //   return res.status(400).json({ error: "Todo not found!" });
-    // }
+    if (!ObjectId.isValid(todoId)) {
+      return res.status(400).json({ error: "Invalid Todo ID" });
+    }
 
-    const {
-      title,
-      description,
-      status,
-      priority,
-      owner,
-      category,
-      due_date,
-    } = req.body;
+    const { title, description, status, priority, owner, category, due_date } =
+      req.body;
 
     const updatedTodo = await Todo.findOneAndUpdate(
       { _id: todoId },
       {
-        title: title,
-        description: description,
-        status: status,
-        priority: priority,
-        owner: owner,
-        category: category,
-        due_date: due_date,
+        title,
+        description,
+        status,
+        priority,
+        owner,
+        category,
+        due_date,
       },
       {
         // Return the updated document

@@ -15,4 +15,4 @@ app.use("/todos", require("./app/routes/routes"));
 // connect to mongo
 connectToMongo();
 
-app.listen(PORT, () => console.log(`Running on port http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Running on port ${PORT}`));
